@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+</head>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+<div id="vue1">
+    <input type="button" @click="flag=!flag" value="按钮">
+    <!--v-if是重新清除和创建DOM , 有较高的切换元素的消耗 ,因为频繁的切换元素会频繁的创建和清除元素耗费资源-->
+    <!--v-show是没有清除DOM只是设置为display为none,有较高的初始化渲染消耗,因为不管是否为真都会进行渲染-->
+    <p v-if="flag">@WSC ,我舒服了,你呢?1</p>
+    <p v-show="flag">@WSC ,我舒服了,你呢?2</p>
+
+</div>
+
+<script>
+    var vm = new Vue({
+      el:'#vue1',
+        data:{
+          flag: true
+        },
+        methods:{
+
+        }
+    })
+
+</script>
+</body>
+</html>

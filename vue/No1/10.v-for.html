@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+<div id="vue1">
+    <h3>v-for 遍历数组对象</h3>
+    <p v-for="(item,index) in list">{{item}} 索引值:{{index}}</p>
+    <!--如果是键值对一起遍历的话,那么就不用指明属性名-->
+    <!--编号: {{index}} ,姓名({{key}}): {{item.name}},年龄({{key}}): {{item.age}},性别({{key}}): {{item.sex}}</p>-->
+
+    <p v-for="(item,index) in List">
+        编号: {{index}} ,姓名: {{item.name}},年龄: {{item.age}},性别: {{item.sex}}</p>
+    <!--也可以使用$index使用索引 , VUE2.0 废除了-->
+    <!--<p v-for="item in List">-->
+    <!--编号: {{$index}} ,姓名: {{item.name}},年龄: {{item.age}},性别: {{item.sex}}</p>-->
+    <h3>v-for 遍历Json对象</h3>
+    <!-- 位置是固定的 ,值第一个 , 键第二个 ,索引第三个-->
+    <p v-for="(key,val,index) in User">
+        编号: {{index}} ,{{key}}: {{val}}</p>
+
+</div>
+<script>
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            list: [1, 2, 3, 4, 5, 6],
+            List: [
+                {name: '小明', age: 12, sex: '男'},
+                {name: '小红', age: 22, sex: '男'},
+                {name: '小龙', age: 14, sex: '女'}
+            ],
+            User: {
+                'name':'小明', 'age': 12, 'sex': '男'
+            }
+        }
+    })
+</script>
+</body>
+</html>

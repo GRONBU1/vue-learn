@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<style type="text/css">
+			.color {
+				color: red;
+			}
+
+			.size {
+				font-size: 30px;
+			}
+
+			.weight {
+				font-weight: 800;
+			}
+
+			.active {
+				color: #00FFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="vue1">
+			<!-- 原生使用 -->
+			<h3 class="color size weight">@WSC , 我舒服了 ,你呢?</h3>
+			<!-- vue使用,使用数组来使用配合v-bind,这样看好像没什么优势-->
+			<h3 :class="['color','size','weight']">@WSC , 我舒服了 ,你呢?</h3>
+			<!--其实是可以使用很多额外的功能  -->
+			<h3 :class="['color','size','weight',flag ?'active':'']">@WSC , 我舒服了 ,你呢?</h3>
+			<!-- 又如,利用对象 -->
+			<h3 :class="['color','size','weight',{'active':flag}]">@WSC , 我舒服了 ,你呢?</h3>
+			<!-- 有如,全部使用对象,对象属性可带引号也可以不带引号,这里是写了引号-->
+			<h3 :class="{'color':true,'size':true,'weight':true,'active':flag}">@WSC , 我舒服了 ,你呢?</h3>
+			<!-- 对象可以用M中的绑定 -->
+			<h3 :class="Obj">@WSC , 我舒服了 ,你呢?</h3>
+
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#vue1",
+				data: {
+					flag: true,
+					Obj: {
+						'color': true,
+						'size': true,
+						'weight': true,
+						'active': true
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

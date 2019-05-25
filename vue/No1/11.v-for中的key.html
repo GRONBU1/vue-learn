@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="vue1">
+    编号:
+    <input type="text" value="" v-model="id">
+    姓名:
+    <input type="text" value="" v-model="name">
+    <input type="button" value="添加" @click="add"/>
+    <!--注意:key是只能是string/number-->
+    <!--使用key的时候要使用v-bind -->
+    <p v-for="item in list" :key="item.id">
+        <input type="checkbox">{{item.id}} ---{{item.name}}
+    </p>
+
+</div>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            id: '',
+            name: '',
+            list: [
+                {id: 1, name: '麻辣香锅'},
+                {id: 2, name: '香干回锅肉'},
+                {id: 3, name: '麻婆豆腐'},
+                {id: 4, name: '土豆炒肉'}
+            ]
+        },
+        methods: {
+            add() {
+                this.list.unshift({id:this.id,name:this.name})
+            }
+        }
+    })
+</script>
+</body>
+</html>

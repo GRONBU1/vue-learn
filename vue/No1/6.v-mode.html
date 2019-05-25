@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue从零开始</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	</head>
+	<body>
+		<div id="vue1">
+			<!-- v-bind是单向绑定的,改变V中的数据不会改变M中的数据 -->
+			<input type="text" name="" id="" :value="msg" />
+			<!-- v-model,它是双向绑定的 -->
+			<!-- 注意:v-model只能用在表单元素中,input(radio,checkbox,text,textarea,select) -->
+			<input type="text" name="" id="" value="" v-model="msg"/>
+			
+			<p>{{msg}}</p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#vue1',
+				data: {
+					msg: 'Hello Vue!'
+				},
+				methods: {}
+			})
+		</script>
+	</body>
+</html>

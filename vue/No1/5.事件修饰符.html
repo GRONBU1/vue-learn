@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	</head>
+	<style type="text/css">
+		.exter{
+			width: 100%;
+			height: 300px;
+			background-color: aqua;
+			border-bottom: black solid 2px;
+		}
+	</style>
+	<body>
+		<div id="vue1">
+			<h3>.stop :</h3>
+			<!-- 点击a按钮会先触发a方法后再触发b方法,这就是事件的冒泡 -->
+			<div class="exter" @click="b">
+				<button type="button" @click="a">按钮</button>
+			</div>
+			<!-- 利用.stop阻止事件冒泡 -->
+			<div class="exter" @click="b">
+				<button type="button" @click.stop="a">按钮</button>
+			</div>
+			<h3>.prevent :</h3>
+			<!-- 点击a标签会自动跳转页面 -->
+			<a href="https://www.baidu.com">链接</a>
+			<!-- 利用.prevent阻止浏览器默认动作 -->
+			<a @click.prevent href="https://www.baidu.com">链接</a>
+			<h3>.capture:</h3>
+			<!-- 实现事件的捕获,即点击内部按钮外部包裹的元素的事件也会被触发,不过和冒泡不同的是,捕获先触发的是外部事件再到内部事件 -->
+			<div class="exter" @click.capture="b">
+				<button type="button" @click="a">按钮</button>
+			</div>
+			<h3>.self:</h3>
+			<!-- 只会触发当前触发元素的事件 -->
+			<div class="exter" @click.self="b">
+				<button type="button" @click="a">按钮</button>
+			</div>
+			<!-- .self和.stop的区别就是.self只会改变自己不会被冒泡触发,而.stop是直接阻止了事件继续冒泡 -->
+			<div class="exter" @click="c">
+				<div @click.self="b">
+					<button type="button" @click="a">按钮</button>
+				</div>
+			</div>
+			<div class="exter" @click="c">
+				<div @click.stop="b">
+					<button type="button" @click="a">按钮</button>
+				</div>
+			</div>
+			<h3>.once:</h3>
+			<!-- .once只会执行一次,如下只会阻止默认行为(跳转页面)一次 -->
+			<a @click.prevent.once href="https://www.baidu.com">链接</a>
+
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#vue1',
+				data: {},
+				methods: {
+					a(){
+						console.log("a方法被触发了")
+					},
+						
+					b(){
+						console.log("b方法被触发了")
+					},
+					c(){
+						console.log("c方法被触发了")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
