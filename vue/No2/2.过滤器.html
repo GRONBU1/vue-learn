@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<!-- 过滤器的使用: name(v-bind或者插值表达式绑定的 M) | 过滤器名称(参数1,参数2...) ; | 为管道符-->
+<!-- 过滤器的定义: Vue.filter(过滤器名称 , function(name,参数1,参数2...){}) -->
+<!-- 过滤器的作用: 对 M 进行最后的过滤处理 -->
+
+<body>
+    <div id="vue1">
+        <!-- 使用管道符使用多个过滤器 ,执行顺序就是从前到后 -->
+        <p>{{msg|msgFilter2()|msgFilter1('爽死')}}</p>
+    </div>
+</body>
+<script>
+    // 定义全局过滤器
+    Vue.filter('msgFilter1', function (msg) {
+        // 使用正则表达式
+
+        return msg.replace(/舒服/g, '爽')
+    })
+    Vue.filter('msgFilter2', function (msg, arg) {
+        // 使用正则表达式
+
+        return msg.replace(/爽/g, arg)
+    })
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            msg: '王思聪,你舒服了吗?我舒服了.'
+        },
+        methods: {}
+    })
+</script>
+
+</html>

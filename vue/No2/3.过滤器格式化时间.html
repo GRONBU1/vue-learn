@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<body>
+    <div id="vue1">
+        <p>{{date1|dateFilter('YYYY-mm-dd hh:mm:ss')}}</p>
+    </div>
+</body>
+<script>
+    Vue.filter("dateFilter", function (date1, pattern) {
+        // 重新获取 日期 对象 进而获取  年月日
+        var date = new Date(date1)
+        var y = date.getFullYear()
+        var m = date.getMonth() + 1
+        // getDate 就是获取一个月第几天,getDay 是获取星期几
+        var d = date.getDate()
+        // return y + '-' + m + '-' + d
+
+        if (pattern && pattern.toLowerCase() === 'yyyy-mm-dd') {
+            return `${y}-${m}-${d}`
+        } else {
+            var HH = date.getHours()
+            var mm = date.getMinutes()
+            var ss = date.getSeconds()
+
+            return `${y}-${m}-${d} ${HH}:${mm}:${ss}`
+        }
+        // 注意使用这种方式是 `` 符号包裹整个表达式
+
+    })
+
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            date1: new Date()
+        },
+        methods: {}
+    })
+</script>
+
+</html>
