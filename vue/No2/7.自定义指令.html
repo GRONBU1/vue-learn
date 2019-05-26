@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <link rel="stylesheet" href="../lib/bulma.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="vue1">
+        <!-- 目标1:使得页面加载就获得焦点 v-focus-->
+        <!-- 目标2:使得页面加载颜色的变红 v-color -->
+        <input id="bb" style="margin: 30px;width:50%" type="text" name="" v-focus class="input is-primary">
+        <p class="p is-primary" style="margin: 30px;" v-color="'green'">我是啥颜色</p>
+    </div>
+    <!-- <input id=" aa" style="margin: 30px;width:50%" type="text" name="" class="input is-primary"> -->
+</body>
+<script>
+    // 注意: 该方法要放在 vue 实例前
+    Vue.directive('focus', {
+        // 当 指令 绑定到元素时触发 ,只触发一次
+        // 该方法写的 el.focus() 不会生效 ,因为 获取焦点要在 元素插入 DOM 之后
+        bind: function (el) {
+            el.focus()
+        },
+        // 当 元素 插入 dom 树后触发 ,只触发一次
+        // 和js行为有关的操作最好在 inserted 中进行
+        inserted: function (el) {
+            el.focus();
+        },
+        // 当 vNode 更新的时候会执行 ,可能会触发多次
+        updated: function (el) {
+
+        }
+    })
+
+    Vue.directive("color", {
+        bind: function (el, binding) {
+            //和样式有关的操作最好在 bind 中进行 
+            // binding 是一个对象 , value 获取的是处理后的值 ,expression 获取的是原始字符串,
+            // 如 '1+1' 前者为获取为2 ,后者返回 '1+1'
+            el.style.color = binding.value
+            // el.style.setProperty("color", "red")
+            // 这样会覆盖元素在html写的行内样式
+            // el.setAttribute("style", "color:red")
+        },
+        inserted: function (el) {
+
+        },
+        updated: function () {
+
+        }
+    })
+
+    // 这样 ,aa也是可以的 ,因为 aa不在vue管理范围内
+    // document.getElementById("aa").focus();
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+        },
+        methods: {
+        }
+    })
+    // 1.使用原生js(dom操作)
+    // 注意要把这条语句放在 创建vue 实例后 ,因为input在vue实例管理范围内 ,
+    // 获取焦点操作是在元素插入 DOM 树之后的,但是vue没有实例化也就内部的元素没有实例化
+    // document.getElementById("bb").focus();
+
+    // 2.Vue 不推荐 操作DOM ,使用自定义指令
+    // directive(参数1,参数2)
+    // 参数1 : 指令名 , 定义时不需要写 v- 前缀 ,但是使用时需要写 v- 前缀 
+    // 参数2 : 对象, 写vue定义好的钩子函数 , 包括 bind:function(){} ,insert:function(){} ,update:function(){}
+    // 注意: 在每个函数中, 第一个参数都是 el ,表示 绑定该指令的js对象 (DoM对象)
+
+
+
+</script>
+
+</html>

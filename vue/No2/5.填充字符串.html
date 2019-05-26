@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="vue1">
+        <p>{{date1}}</p>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            //  padStart(参数1,参数2)
+            //  参数1:字符串最大的长度
+            //  参数2: 填充的字符
+            // 如果填充字符大于剩余字符长度,则能填多少位填多少,很好理解 
+            // 注意:getMonth() 获得的值是 number 类型的
+            date1: new Date().getFullYear() + '-' + new Date().getMonth().toString().padStart(3, '2') + '-' + new Date().getDate(),
+        },
+        methods: {}
+    })
+
+    console.info(typeof new Date().getMonth())
+</script>
+
+</html>

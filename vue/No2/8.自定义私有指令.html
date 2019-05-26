@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <link rel="stylesheet" href="../lib/bulma.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="vue1">
+        <!-- 注意 green 要是字符串 ,不然会默认去 data 对象中 找这个 green 的值 -->
+        <p class="p is-primary" style="margin: 30px;" v-weight="900" v-color="'green'">我是啥大小</p>
+    </div>
+
+</body>
+<script>
+    // 简化全局自定义指令
+    Vue.directive('color', function (el, binding) {
+        el.style.color = binding.value
+    }
+    );
+
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+        },
+        methods: {
+        },
+        directives: {
+            // 简化默认 给 updated 和 bind 钩子函数 实现
+            // 之前的 写法 weight :{
+            //     bind:function(){
+
+            //     }
+            // }
+            'weight': function (el, binding) {
+                el.style.fontWeight = binding.value
+            }
+        }
+    })
+
+
+
+</script>
+
+</html>

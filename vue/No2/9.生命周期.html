@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 生命周期钩子函数 -->
+    <img src="https://cn.vuejs.org/images/lifecycle.png" alt="" sizes="" srcset="">
+    <div id="vue1">
+        <p id="a1">{{msg2}}</p>
+        <button v-on:click="show" id="b1">我是按钮</button>
+        <button @click="change" id="b2">改变数据:{{msg3}}</button>
+    </div>
+</body>
+<script>
+
+    // 要理解  这里的生命周期 指的是 Vue 实例 创建 - 运行 - 销毁 的生命周期 ,并不是页面本身的生命周期 ,
+    // 可以理解为 vue 是在 old page的基础上加工产生 new page,那么 vue 实例的生命周期就是 加工 这个过程的操作
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            msg1: "Hello Vue!1",
+            msg2: "Hello Vue!2",
+            msg3: "Hello Vue!3"
+        },
+        methods: {
+            show() {
+                console.info("我被显示了")
+            },
+            change() {
+                this.msg3 = "Bye Vue!"
+            }
+
+        },
+        // vue init 
+        beforeCreate() {
+            // 初始化了一个空的Vue实例对象 ，这个对象只有一些默认的事件和生命周期函数，其他东西未创建。
+            // 在beforeCreated生命周期执行的时候，data和mehods中的数据还没有被初始化
+            console.info("beforeCreate:")
+            // thsi.show()
+
+        },
+        created() {
+            // 这个时候 Vue 实例对象中的 data和methods 就被初始化好了
+            // 如果要对 Vue 实例中的 data 和 methods 最早要在 created 中
+            console.info("created:")
+            console.info(this.msg1)
+            this.show()
+
+        },
+        //  编译模板过程
+        beforeMount() {
+            // 这个时候 模板已经编译完毕\渲染数据完毕 在内存中 ,但是还没有被插入页面中
+            // 页面中的 button 也是没有效果的
+            console.info("beforeMount:")
+            console.info(document.getElementById("a1").innerText)
+            document.getElementById("b1").click();
+        },
+        // 将编译好的模板 替换 到浏览器中
+        mounted() {
+            // 只要执行 mounted 就表示 整个 vue实例已经初始化完毕 ,此时 ,组件脱离 创建阶段进入运行阶段
+            console.info("mounted:")
+            console.info(document.getElementById("a1").innerText)
+            document.getElementById("b1").click();
+        },
+        // 进入 运行 阶段
+        // 当 数据 改变时触发运行时钩子 , 可能会触发 0 - 无限 次
+        beforeUpdate() {
+            // 这个时候 页面 的 数据 没有 更新 ,但是 data 中的数据更新了.
+            console.info("beforeUpdate:")
+            // 页面数据:
+            console.info(document.getElementById("b2").innerText)
+            // data数据:
+            console.info(this.msg3)
+        },
+        // 先 根据 data中的新数据 在内存 中渲染一份 新的内存DOM 树 ,之后会把内存DOM 树重新渲染到页面中,页面的数据也就被更新了
+        updated() {
+            console.info("updated:")
+            // 这个时候 页面 的 数据 没有 更新 ,但是 data 中的数据更新了.
+            // 页面数据:
+            console.info(document.getElementById("b2").innerText)
+            // data数据:
+            console.info(this.msg3)
+        },
+        // 钩子进入了 销毁 阶段  
+        beforeDestory() {
+            // 实例的 数据 和 函数 ,过滤器 ,..没有真正被销毁 ,都处于可用状态
+        },
+        destoryed() {
+            // 实例的 数据 和 函数 ,过滤器 ,..已经被销毁了 , 都处于不可用状态     
+        }
+
+    })
+</script>
+
+</html>
