@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>从零开始学Vue</title>
+</head>
+<body>
+
+<div id="vueInstance">
+    <div id="vueInstance">
+        请输入数字：<input type="text" name="" id="" value="" v-model="num"/>
+        结果：{{square}}
+    </div>
+    <script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+    <script>
+        var V = new Vue({
+            el: '#vueInstance',
+            data: {
+                num: 1
+            },
+            computed: {
+                square: function () {
+                    return this.num * this.num
+                }
+            }
+        });
+    </script>
+</body>
+</html>

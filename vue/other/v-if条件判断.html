@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>从零开始学Vue</title>
+</head>
+<body>
+
+<div id="vueInstance">
+    <section v-if="status">
+        <!-- 用template替换section也可以 -->
+        欢迎您: <input type="text" v-model="name">
+        <button type="button" v-on:click="say">欢迎</button>
+        <button type="button" @click="changeStatus">exit</button>
+    </section>
+    <section v-if="!status">
+        账号：<input type="text"/>
+        密码：<input type="password" name=""/>
+        <button type="button" @click="changeStatus">登录</button>
+    </section>
+</div>
+<script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+<script>
+    var V = new Vue({
+        el: '#vueInstance',
+        data: {
+            name: 'Gronbu1',
+            status: false
+        },
+        methods: {
+            say: function () {
+                alert('欢迎' + this.name)
+            },
+            changeStatus: function () {
+                this.status = !this.status
+            }
+        }
+    });
+</script>
+</body>
+</html>

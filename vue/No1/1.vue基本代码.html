@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Vue从零开始</title>
-		<!-- 1.导入vue包 -->
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	</head>
-	<body>
-		//vue可以控制的范围
-		//这就是MVVM中的V,视图
-		<div id="vue1">
-			{{msg}}
-		</div>
-		<script type="text/javascript">
-			// 2.当导入vue包后 在浏览器内存中就有个Vue的构造函数,可以构建Vue实例
-			// 这也是MVVM种的VM
-			var vm = new Vue({
-				// 设定vue可以控制的边界点或者说范围
-				el :'#vue1',
-				// 这就是MVVM中的M(模型层/数据)
-				data:{
-					msg:'Hello Vue!'
-				}
-			})
-			//通过VM,不用再去操作DOM
-		</script>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <title>Vue从零开始</title>
+    <!-- 1.导入vue包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+//vue可以控制的范围
+//这就是MVVM中的V,视图
+<div id="vue1">
+    {{msg}}
+</div>
+<script type="text/javascript">
+    // 2.当导入vue包后 在浏览器内存中就有个Vue的构造函数,可以构建Vue实例
+    // 这也是MVVM种的VM
+    var vm = new Vue({
+        // 设定vue可以控制的边界点或者说范围
+        el: '#vue1',
+        // 这就是MVVM中的M(模型层/数据)
+        data: {
+            msg: 'Hello Vue!'
+        }
+    })
+    //通过VM,不用再去操作DOM
+</script>
+</body>
 </html>

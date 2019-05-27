@@ -8,9 +8,9 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <body>
-    <div id="vue1">
-        <p>{{date1|dateFilter('YYYY-mm-dd hh:mm:ss')}}</p>
-    </div>
+<div id="vue1">
+    <p>{{date1|dateFilter('YYYY-mm-dd hh:mm:ss')}}</p>
+</div>
 </body>
 <script>
     Vue.filter("dateFilter", function (date1, pattern) {

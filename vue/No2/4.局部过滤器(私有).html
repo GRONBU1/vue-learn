@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <div id="vue1">
-        <p>{{msg}}</p>
-    </div>
-    <div id="vue2">
-        <p>{{msg | msgFilter}}</p>
-    </div>
+<div id="vue1">
+    <p>{{msg}}</p>
+</div>
+<div id="vue2">
+    <p>{{msg | msgFilter}}</p>
+</div>
 </body>
 <script>
     var vm = new Vue({
@@ -21,17 +21,14 @@
         data: {
             msg: '你好啊'
         },
-        methods: {
-
-        }
+        methods: {}
     })
     var vm = new Vue({
         el: '#vue2',
         data: {
             msg: '你妹啊'
         },
-        methods: {
-        },
+        methods: {},
         // 私有过滤器(局部),定义方法 filter:{ 过滤器名称 : function(管道符前字符,参数1){}}
         // 注意:filters 而不是 filter 
         // 局部过滤器优先级高于全局过滤器
