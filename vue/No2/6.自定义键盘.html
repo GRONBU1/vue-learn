@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue从零开始</title>
-    <link rel="stylesheet" href="../lib/bulma.css" />
+    <link rel="stylesheet" href="../lib/bulma.css"/>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
-    <div id="vue1">
-        <!-- keyup : 键盘抬起触发, .enter vue设定好的指代 回车键 -->
-        <input class="input is-primary" type="text" name="
+<div id="vue1">
+    <!-- keyup : 键盘抬起触发, .enter vue设定好的指代 回车键 -->
+    <input class="input is-primary" type="text" name="
         " id="" @keyup.enter="add" placeholder="vue自定义代码" v-model="p2">
-        <!-- 也可以使用 键盘的替代码 如f2 :113 -->
-        <input type="text" name="" v-model="p2" class="input is-primary" id="" placeholder="键盘代码" @keyup.113="add">
-        <!-- 使用自定义 键盘代码  -->
-        <input type="text" name="" v-model="p2" class="input is-primary" id="" placeholder="键盘代码" @keyup.f2="add">
-        <p class="p">{{p1}}</p>
-    </div>
+    <!-- 也可以使用 键盘的替代码 如f2 :113 -->
+    <input type="text" name="" v-model="p2" class="input is-primary" id="" placeholder="键盘代码" @keyup.113="add">
+    <!-- 使用自定义 键盘代码  -->
+    <input type="text" name="" v-model="p2" class="input is-primary" id="" placeholder="键盘代码" @keyup.f2="add">
+    <p class="p">{{p1}}</p>
+</div>
 </body>
 <script>
     // 全局自定义键盘代码设置

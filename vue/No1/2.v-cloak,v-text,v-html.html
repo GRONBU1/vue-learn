@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Vue从零开始</title>
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	</head>
-	<style type="text/css">
-		[v-cloak]{
-			display: none;
-		}
-	</style>
-	<body>
-		<div id="vue1">
-			<!-- 使用插值表达式有 闪烁问题(当网速很慢vue包没有加载完成,
-			插值表达式的内容没有被替换那么就会显示{{msg}}) -->
-			<h3>v-cloak:</h3>
-			<p>{{msg}}</p>
-			<p v-cloak>{{msg}}</p>
-			<h3>v-text:</h3>
-			<!-- 使用v-text也能解决闪烁问题 -->
-			<p v-text="msg"></p>
-			<!-- v-text会替换元素内的所有内容 ,而插值表达式只会替换自己的占位符,不会清空元素内容 -->
-			<p v-text="msg1">=================================</p>
-			<p>I love you {{msg1}}</p>
-			<!-- v-text和插值表达式都不能解析html标签,v-html可以实现 -->
-			<h3>v-html:</h3>
-			<p>{{msg2}}</p>
-			<p v-text="msg2"></p>
-			<p v-html="msg2"></p>
-		</div>
-		<!-- 如果在实例化Vue的过程中有错,那么所有vue编译都会失效 -->
-		<script type="text/javascript">
-			var vm = new Vue({
-				el:'#vue1',
-				data:{
-					msg:123,
-					msg1:'Hello Vue!',
-					msg2:'<h1>Hi Vue.js!</h1>'
-				}
-			})
-		</script>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<style type="text/css">
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+<div id="vue1">
+    <!-- 使用插值表达式有 闪烁问题(当网速很慢vue包没有加载完成,
+    插值表达式的内容没有被替换那么就会显示{{msg}}) -->
+    <h3>v-cloak:</h3>
+    <p>{{msg}}</p>
+    <p v-cloak>{{msg}}</p>
+    <h3>v-text:</h3>
+    <!-- 使用v-text也能解决闪烁问题 -->
+    <p v-text="msg"></p>
+    <!-- v-text会替换元素内的所有内容 ,而插值表达式只会替换自己的占位符,不会清空元素内容 -->
+    <p v-text="msg1">=================================</p>
+    <p>I love you {{msg1}}</p>
+    <!-- v-text和插值表达式都不能解析html标签,v-html可以实现 -->
+    <h3>v-html:</h3>
+    <p>{{msg2}}</p>
+    <p v-text="msg2"></p>
+    <p v-html="msg2"></p>
+</div>
+<!-- 如果在实例化Vue的过程中有错,那么所有vue编译都会失效 -->
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            msg: 123,
+            msg1: 'Hello Vue!',
+            msg2: '<h1>Hi Vue.js!</h1>'
+        }
+    })
+</script>
+</body>
 </html>

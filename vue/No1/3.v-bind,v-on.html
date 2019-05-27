@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Vue从零开始</title>
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	</head>
-	<body>
-		<div id="vue1">
-			<h3>v-bind:</h3>
-			<!-- 这样不行,要告诉浏览器这个msg是vue中的data对象中的msg -->
-			<input type="text" name="" id="" value="msg" />
-			<p></p>
-			<!-- 如下,利用v-bind-->
-			<input type="text" v-bind:value="msg">
-			<p></p>
-			<!-- 也可以简写 -->
-			<input type="text" :value="msg">
-			<h3>v-on:</h3>
-			<!-- 绑定方法 -->
-			<input type="button" name="" id="" value="按钮" onclick="alert('Hello Vue')" >
-			<!-- 利用v-on -->
-			<input type="button" name="" id="" value="按钮" v-on:click="alert('Hello Vue')"/>
-			<!-- 配合vue实例中的methods对象 -->
-			<input type="button" name="" id="" value="按钮" v-on:click="show(' Hello Vue')"/>
+<head>
+    <meta charset="utf-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="vue1">
+    <h3>v-bind:</h3>
+    <!-- 这样不行,要告诉浏览器这个msg是vue中的data对象中的msg -->
+    <input type="text" name="" id="" value="msg"/>
+    <p></p>
+    <!-- 如下,利用v-bind-->
+    <input type="text" v-bind:value="msg">
+    <p></p>
+    <!-- 也可以简写 -->
+    <input type="text" :value="msg">
+    <h3>v-on:</h3>
+    <!-- 绑定方法 -->
+    <input type="button" name="" id="" value="按钮" onclick="alert('Hello Vue')">
+    <!-- 利用v-on -->
+    <input type="button" name="" id="" value="按钮" v-on:click="alert('Hello Vue')"/>
+    <!-- 配合vue实例中的methods对象 -->
+    <input type="button" name="" id="" value="按钮" v-on:click="show(' Hello Vue')"/>
 
-		</div>
-		<script type="text/javascript">
-			var vm = new Vue({
-				el: '#vue1',
-				data: {
-					msg: 'Hello Vue!'
-				},
-				methods:{
-					show:function(str){
-						alert("Show is me"+str)
-					}
-				}
-			})
-		</script>
-	</body>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            msg: 'Hello Vue!'
+        },
+        methods: {
+            show: function (str) {
+                alert("Show is me" + str)
+            }
+        }
+    })
+</script>
+</body>
 </html>

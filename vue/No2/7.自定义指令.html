@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue从零开始</title>
-    <link rel="stylesheet" href="../lib/bulma.css" />
+    <link rel="stylesheet" href="../lib/bulma.css"/>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
-    <div id="vue1">
-        <!-- 目标1:使得页面加载就获得焦点 v-focus-->
-        <!-- 目标2:使得页面加载颜色的变红 v-color -->
-        <input id="bb" style="margin: 30px;width:50%" type="text" name="" v-focus class="input is-primary">
-        <p class="p is-primary" style="margin: 30px;" v-color="'green'">我是啥颜色</p>
-    </div>
-    <!-- <input id=" aa" style="margin: 30px;width:50%" type="text" name="" class="input is-primary"> -->
+<div id="vue1">
+    <!-- 目标1:使得页面加载就获得焦点 v-focus-->
+    <!-- 目标2:使得页面加载颜色的变红 v-color -->
+    <input id="bb" style="margin: 30px;width:50%" type="text" name="" v-focus class="input is-primary">
+    <p class="p is-primary" style="margin: 30px;" v-color="'green'">我是啥颜色</p>
+</div>
+<!-- <input id=" aa" style="margin: 30px;width:50%" type="text" name="" class="input is-primary"> -->
 </body>
 <script>
     // 注意: 该方法要放在 vue 实例前
@@ -58,10 +58,8 @@
     // document.getElementById("aa").focus();
     var vm = new Vue({
         el: '#vue1',
-        data: {
-        },
-        methods: {
-        }
+        data: {},
+        methods: {}
     })
     // 1.使用原生js(dom操作)
     // 注意要把这条语句放在 创建vue 实例后 ,因为input在vue实例管理范围内 ,
@@ -73,7 +71,6 @@
     // 参数1 : 指令名 , 定义时不需要写 v- 前缀 ,但是使用时需要写 v- 前缀 
     // 参数2 : 对象, 写vue定义好的钩子函数 , 包括 bind:function(){} ,insert:function(){} ,update:function(){}
     // 注意: 在每个函数中, 第一个参数都是 el ,表示 绑定该指令的js对象 (DoM对象)
-
 
 
 </script>

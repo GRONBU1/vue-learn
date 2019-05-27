@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>从零开始学Vue</title>
-	</head>
-	<body>
+<head>
+    <title>从零开始学Vue</title>
+</head>
+<body>
 
-		<div id="vueInstance">
-			<div id="vueInstance">
-				<ul>
-					
-					<li v-for="el in products">
-						{{$index}}-{{ el.name }} - ￥ {{ el. price }} - {{ el. category }}
-					</li>
-					<!-- 或者如下，注意index和el的位置不能交换，只能index在前 -->
-					<li v-for="(index,el) in products">
-						{{index}}-{{ el.name }} - ￥ {{ el. price }} - {{ el. category }}
-					</li>
-				</ul>
-			</div>
-			<script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
-			<script>
-				var V = new Vue({
-					el: '#vueInstance',
-					data: {
-						products: [{
-								name: 'microphone',
-								price: 25,
-								category: 'electronics'
-							},
-							{
-								name: 'laptop case',
-								price: 15,
-								category: 'accessories'
-							},
-							{
-								name: 'screen cleaner',
-								price: 17,
-								category: 'accessories'
-							},
-							{
-								name: 'laptop charger',
-								price: 70,
-								category: 'electronics'
-							},
-							{
-								name: 'mouse',
-								price: 40,
-								category: 'electronics'
-							},
-							{
-								name: 'earphones',
-								price: 20,
-								category: 'electronics'
-							},
-							{
-								name: 'monitor',
-								price: 120,
-								category: 'electronics'
-							}
-						]
-					}
-				});
-			</script>
-	</body>
+<div id="vueInstance">
+    <div id="vueInstance">
+        <ul>
+
+            <li v-for="el in products">
+                {{$index}}-{{ el.name }} - ￥ {{ el. price }} - {{ el. category }}
+            </li>
+            <!-- 或者如下，注意index和el的位置不能交换，只能index在前 -->
+            <li v-for="(index,el) in products">
+                {{index}}-{{ el.name }} - ￥ {{ el. price }} - {{ el. category }}
+            </li>
+        </ul>
+    </div>
+    <script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+    <script>
+        var V = new Vue({
+            el: '#vueInstance',
+            data: {
+                products: [{
+                    name: 'microphone',
+                    price: 25,
+                    category: 'electronics'
+                },
+                    {
+                        name: 'laptop case',
+                        price: 15,
+                        category: 'accessories'
+                    },
+                    {
+                        name: 'screen cleaner',
+                        price: 17,
+                        category: 'accessories'
+                    },
+                    {
+                        name: 'laptop charger',
+                        price: 70,
+                        category: 'electronics'
+                    },
+                    {
+                        name: 'mouse',
+                        price: 40,
+                        category: 'electronics'
+                    },
+                    {
+                        name: 'earphones',
+                        price: 20,
+                        category: 'electronics'
+                    },
+                    {
+                        name: 'monitor',
+                        price: 120,
+                        category: 'electronics'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
 </html>
