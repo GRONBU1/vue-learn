@@ -1,85 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Vue从零开始</title>
-    <script src="https: //cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  </head>
-  <body>
-    <section id="vue1">
-      <section class="hero is-primary">
-        <div class="hero-body" style="padding:10px;">
-          <div class="container">
-            <h1 class="title">
-              品牌
-            </h1>
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue从零开始</title>
+  <script src="https: //cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <section id="vue1">
+    <section class="hero is-primary">
+      <div class="hero-body" style="padding:10px;">
+        <div class="container">
+          <h1 class="title">
+            品牌
+          </h1>
         </div>
-      </section>
-      <label
-        style="position: relative;top: 16px;font-weight: 600;margin: 0 0 0 15px;"
-        >Id:</label
-      ><input
-        v-model="id"
-        class="input is-primary"
-        type="text"
-        placeholder=""
-        style="width: 200px;margin: 10px 10px;"
-      />
-      <label style="position: relative;top: 16px;font-weight: 600;">名称:</label
-      ><input
-        v-model="name"
-        class="input is-primary"
-        type="text"
-        placeholder=""
-        style="width: 200px;margin: 10px 10px;"
-      />
-      <a class="button is-primary" style="margin: 10px 10px;" @click="add"
-        >添加</a
-      >
-      <label
-        style="position: relative;top: 16px;font-weight: 600;margin-left:700px"
-        @
-        >搜索:</label
-      >
-      <input
-        v-model="keyword"
-        class="input is-primary"
-        type="text"
-        placeholder=""
-        style="width: 200px;margin: 10px 10px;"
-      />
-      <table
-        width="100%"
-        border=""
-        cellspacing=""
-        cellpadding=""
-        class="table is-bordered"
-      >
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>名称</th>
-            <th>时间</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in search(keyword)" :key="item.id">
-            <th>{{ item.id }}</th>
-            <th>{{ item.name }}</th>
-            <th>{{ item.date }}</th>
-            <th><a @click.prevent="del(item.id)">删除</a></th>
-          </tr>
-        </tbody>
-      </table>
+      </div>
     </section>
-  </body>
-  <script>
-    var vm = new Vue({
-      el: "vue1",
-      data: {},
-      methods: {}
-    });
-  </script>
+    <label style="position: relative;top: 16px;font-weight: 600;margin: 0 0 0 15px;">Id:</label><input v-model="id"
+      class="input is-primary" type="text" placeholder="" style="width: 200px;margin: 10px 10px;" />
+    <label style="position: relative;top: 16px;font-weight: 600;">名称:</label><input v-model="name"
+      class="input is-primary" type="text" placeholder="" style="width: 200px;margin: 10px 10px;" />
+    <a class="button is-primary" style="margin: 10px 10px;" @click="add">添加</a>
+    <label style="position: relative;top: 16px;font-weight: 600;margin-left:700px" @>搜索:</label>
+    <input v-model="keyword" class="input is-primary" type="text" placeholder=""
+      style="width: 200px;margin: 10px 10px;" />
+    <table width="100%" border="" cellspacing="" cellpadding="" class="table is-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>名称</th>
+          <th>时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in search(keyword)" :key="item.id">
+          <th>{{ item.id }}</th>
+          <th>{{ item.name }}</th>
+          <th>{{ item.date }}</th>
+          <th><a @click.prevent="del(item.id)">删除</a></th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</body>
+<script>
+  var vm = new Vue({
+    el: "vue1",
+    data: {},
+    methods: {}
+  });
+</script>
+
 </html>
