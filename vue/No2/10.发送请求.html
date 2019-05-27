@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 注意: vue-resource 依赖 vue 所以 要在 vue 之后引入 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+
+<body>
+    <div id="vue1">
+        <button @click="toGet">Get</button>
+        <button @click="toPost">Post</button>
+        <button @click="toJsonp">Jsonp</button>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#vue1',
+        data: {},
+        methods: {
+            toGet() {
+                this.$http.get('http://vue.studyit.io/api/get').then(result => {
+                })
+            },
+            toPost() {
+                // 使用 表单 ,emulateJSON 
+                this.$http.post('http://vue.studyit.io/api/post', {}, { emulateJSON: true }).then(result => {
+                    console.log(result.body)
+                })
+            },
+            toJsonp() {
+                // this.$http.jsonp('http://vue.studyit.io/api/jsonp').then(result => {
+                //     console.log(result.body)
+                // })
+                // 注意 :jsonp 只能发送 get 请求
+                this.$http.jsonp({
+                    url: 'xxx',
+                    method: 'POST',
+                    emulateJSON: true,
+                    data: {
+                        username: "xxxx",
+                        password: "xxxx",
+                    }
+                }).then(function (response) {
+                    console.log(response.data);
+                })
+            }
+        }
+    })
+</script>
+
+</html>
