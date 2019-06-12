@@ -35,5 +35,6 @@ private static final long serialVersionUID=1L;
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date date;
 
+    private Date birthday;
 
 }
