@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <!-- Vue 中的动画 主要有 两个过程，每个过程又分为三部分  -->
+    <!-- enter -->
+    <!-- v-enter : 元素进入动画前的状态 -->
+    <!-- v-enter-to : 元素进入动画后的结束状态 -->
+    <!-- v-enter-active : 元素动画过程（如：时间控制等） -->
+    <!-- leave -->
+    <!-- v-leave ： 元素离开动画的状态 -->
+    <!-- v-leave-to : 元素离开动画后的状态 -->
+    <!-- v-leave-active :  -->
+    <!-- 其实可以这么 理解，如果 v-enter 和 v-leave-to 样式一致，那么两个 过程 的 动画结束后 元素的样式和元素进入动画前 一致 -->
+    <!-- 可以 理解 两个 不同 的 动画过程 ，不过由于大部分动画使用都有 对称性 所以针对这种情况 出现了 配对使用的 v-enter 和 v-leave -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+      /* 别忘记 v-xxx，这个v 表示是共享 动画 */
+      .v-enter,
+      .v-leave-to {
+        opacity: 0;
+        /* 规定不透明度。从 0.0 （完全透明）到 1.0（完全不透明） */
+        transform: translateX(10px);
+      }
+      /* 这里是没有 enter-to的 */
+      .v-enter-active,
+      .v-leave-active {
+        transition: all 0.4s ease;
+        /* 
+      【1】transition-property：
+      规定应用过渡效果的 CSS 属性的名称（当指定的CSS属性改变时，过渡效果开始），其默认值为 all 。
+      【2】transition-duration：
+      规定完成过渡效果需要的时间（单位为 s 或 ms），其默认值为 0s ，意味着如果不指定这个属性，将不会呈现过渡效果。
+      【3】transition-timing-function：
+      规定过渡效果的时间曲线。
+      默认 ease ：慢速开始，中间变快，慢速结束；相当于 cubic-bezier(0.25, 0.1, 0.25, 1)。
+      可选 liner：匀速运动；相当于 cubic-bezier(0, 0, 1, 1)。
+      可选 ease-in：慢速开始；相当于 cubic-bezier(0.42, 0, 1, 1)。
+      可选 ease-out：慢速结束；相当于 cubic-bezier(0, 0, 0.58, 1)
+      可选 ease-in-out：慢速开始，慢速结束；相当于 cubic-bezier(0.42, 0, 0.58, 1)
+      可选 cubic-bezier(n, n, n, n)：在 bezier 函数中自定义 0 ~ 1 之间的数值。
+      【4】transition-delay：
+      规定过渡效果的延迟时间，默认为 0s 。 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="vue1">
+      <button @click="aa=!aa">按钮</button>
+      <!-- Vue 官方的标签 transition，要实现动画的元素写在里面 -->
+      <transition>
+        <h3 v-if="aa">Hello Vue!</h3>
+      </transition>
+    </div>
+  </body>
+  <script>
+    var vm = new Vue({
+      el: "#vue1",
+      data: {
+        aa: false
+      },
+      methods: {}
+    });
+  </script>
+</html>

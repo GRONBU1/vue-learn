@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="../lib/Animate.css" />
+  </head>
+  <body>
+    <div id="vue1">
+      <button @click="flag =!flag">按钮1</button>
+      <!-- 很奇怪 有些 能用 有些 不能用  -->
+      <transition
+        enter-active-class="bounceIn"
+        leave-active-class="bounceOut"
+        :duration="{enter:1000,leave:600}"
+      >
+        <!-- duration可以设置 进入时间 ，离开时间 -->
+        <h3 v-if="flag">Hello Vue!</h3>
+      </transition>
+    </div>
+  </body>
+  <script>
+    var vm = new Vue({
+      el: "#vue1",
+      data: { flag: false },
+      methods: {}
+    });
+  </script>
+</html>

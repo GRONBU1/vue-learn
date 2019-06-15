@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <!-- Vue 中的动画 主要有 两个过程，每个过程又分为三部分  -->
+    <!-- enter -->
+    <!-- v-enter : 元素进入动画前的状态 -->
+    <!-- v-enter-to : 元素进入动画后的结束状态 -->
+    <!-- v-enter-active : 元素动画过程（如：时间控制等） -->
+    <!-- leave -->
+    <!-- v-leave ： 元素离开动画的状态 -->
+    <!-- v-leave-to : 元素离开动画后的状态 -->
+    <!-- v-leave-active :  -->
+    <!-- 其实可以这么 理解，如果 v-enter 和 v-leave-to 样式一致，那么两个 过程 的 动画结束后 元素的样式和元素进入动画前 一致 -->
+    <!-- 可以 理解 两个 不同 的 动画过程 ，不过由于大部分动画使用都有 对称性 所以针对这种情况 出现了 配对使用的 v-enter 和 v-leave -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+      /* 别忘记 v-xxx，这个v 表示是共享 动画 */
+      .v-enter,
+      .v-leave-to {
+        opacity: 0;
+        /* 规定不透明度。从 0.0 （完全透明）到 1.0（完全不透明） */
+        transform: translateX(10px);
+      }
+      /* 这里是没有 enter-to的 */
+      .v-enter-active,
+      .v-leave-active {
+        transition: all 0.4s ease;
+      }
+
+      .my-enter,
+      .my-leave-to {
+        opacity: 0;
+        /* 规定不透明度。从 0.0 （完全透明）到 1.0（完全不透明） */
+        transform: translateX(-10px);
+      }
+      /* 这里是没有 enter-to的 */
+      .my-enter-active,
+      .my-leave-active {
+        transition: all 0.4s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="vue1">
+      <button @click="aa=!aa">按钮</button>
+      <!-- Vue 官方的标签 transition，要实现动画的元素写在里面 -->
+      <transition>
+        <h3 v-if="aa">Hello Vue!</h3>
+      </transition>
+      <button @click="bb=!bb">按钮</button>
+      <!-- 如果不定义 name 那么默认使用 v-xxx 指定的动画 ，指定了 name 会使用 name-xxx 的动画 -->
+      <transition name="my">
+        <h3 v-if="bb">Hello Vue!</h3>
+      </transition>
+    </div>
+  </body>
+  <script>
+    var vm = new Vue({
+      el: "#vue1",
+      data: {
+        aa: false,
+        bb: false
+      },
+      methods: {}
+    });
+  </script>
+</html>
