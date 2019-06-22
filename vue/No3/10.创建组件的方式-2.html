@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="vue1">
+      <comp></comp>
+    </div>
+  </body>
+  <script>
+    Vue.component("comp", {
+      template: "<h1>Hello Vue！</>"
+    });
+
+    var vm = new Vue({
+      el: "#vue1",
+      data: {},
+      methods: {}
+    });
+  </script>
+</html>

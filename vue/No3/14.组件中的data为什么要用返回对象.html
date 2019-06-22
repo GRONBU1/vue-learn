@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <template id="temp">
+    <div>
+      <button @click="methd">按钮</button>
+      <br />
+      <h3>{{ count }}</h3>
+    </div>
+  </template>
+
+  <body>
+    <div id="vue1">
+      <comp></comp>
+      <comp></comp>
+      <comp></comp>
+    </div>
+  </body>
+  <script>
+    var dataobj = { count: 0 };
+    Vue.component("comp", {
+      template: "#temp",
+      data: function() {
+        // 这种情况， 所有相同的组件共享相同的 count
+        // return dataobj;
+        // 用这种就不会
+        return { count: 0 };
+      },
+      methods: {
+        methd() {
+          this.count++;
+        }
+      }
+    });
+    var vm = new Vue({
+      el: "#vue1",
+      data: {},
+      methods: {}
+    });
+  </script>
+</html>

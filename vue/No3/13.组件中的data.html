@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="vue1">
+      <comp></comp>
+    </div>
+  </body>
+  <script>
+    var vm = new Vue({
+      el: "#vue1",
+      data: {},
+      methods: {},
+      components: {
+        comp: {
+          template: "<h3>Helllllllooooo! {{arg}}</h3>",
+          // 注意：组件中的 data 和 Vue 实例中的有差别，
+          // 1. 组件中的data 不能是一个对象，而是一个方法
+          // 2. 组件中的data 必须要有返回值，且是一个对象
+          // 3. 组件中data的使用和Vue实例中的用法是一样的
+          data: function() {
+            return {
+              arg: "Vue"
+            };
+          }
+        }
+      }
+    });
+  </script>
+</html>
