@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="vue1">
+      <!-- 注意：定义时可以使用驼峰但是使用要用 '-' 分隔 ，如果不是驼峰那就直接使用原名称就好了-->
+      <my-comp1></my-comp1>
+      <mycomp2></mycomp2>
+    </div>
+  </body>
+  <script>
+    //   全局的定义组件也是需要在 Vue 实例中
+    var comp1 = Vue.extend({
+      template: "<h5>Hello Vue！</h5>"
+    });
+    // 注意：参数1 是字符串
+    Vue.component("myComp1", comp1);
+    // #############################################################
+    // 简单使用 ,为什么只能 创建出一个 标签。答案看 注释
+
+    Vue.component(
+      "mycomp2",
+      Vue.extend({
+        template: "<div><h5>Hello Vue ！！</h5><h5>Hello Vue ！！!</h5></div>"
+      })
+    );
+
+    var vm = new Vue({
+      el: "#vue1",
+      data: {},
+      methods: {}
+    });
+  </script>
+</html>
