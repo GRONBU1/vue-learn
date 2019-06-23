@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<!-- 实现小球的半场动画 -->
+<style>
+    .ball {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: brown
+    }
+</style>
+
+<body>
+    <div id="vue1">
+        <button @click="flag=!flag">Button</button>
+        <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+            <div v-if="flag" class="ball"></div>
+        </transition>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            flag: false
+        },
+        methods: {
+            // 小球 初始状态 ,el表示 绑定事件的 dom元素 
+            beforeEnter(el) {
+                el.style.transform = "translate(0,0)"
+            },
+            // 小球 动画结束状态
+            enter(el, done) {
+                // 必须加上 offset XXX 才行 ，offsetHight也可以，Left ，这样强制刷新
+                el.offsetWidth;
+                el.style.transform = "translate(150px,450px)"
+                el.style.transition = "all 1s ease";
+                // 这里的done 就是 afterEnter 函数的引用
+                done()
+            },
+            afterEnter(el) {
+                this.flag = !this.flag;
+            },
+        }
+    })
+</script>
+
+</html>

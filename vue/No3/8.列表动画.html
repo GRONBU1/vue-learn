@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../lib/bulma.css" />
+    <style>
+        li {
+            margin: 5px;
+            width: 100%;
+            border: solid black 1px;
+        }
+
+        li:hover {
+            background-color: aqua;
+        }
+
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateY(80px)
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all 1s ease;
+        }
+
+        /* 添加以下 ,在删除的时候,下面的列也会慢慢 浮上 , 这种写法一般 是 固定了 */
+        .v-move {
+            transition: all 1s ease;
+        }
+
+        .v-leave-active {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="vue1">
+        <input type="text" class="input" v-model="id" width="100px">
+        <input type="text" class="input" v-model="name" width="100px">
+        <button class="button" @click="add">添加</button>
+        <!-- <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>姓名</th>
+                    <th>位置</th>
+                </tr>
+            <tbody>
+                <!-- 注意:如果是 用 v-for 渲染出来的表单 不能使用 transition 包裹,而是transitionGroup -
+                <transition>
+                    <tr v-for="item in list" :key="item.id">
+                        <th>{{item.id}}</th>
+                        <th>{{item.name}}</th>
+                        <th>{{item.positon}}</th>
+                    </tr>
+                </transition>
+            </tbody>
+            </thead>
+        </table> -->
+        <!-- 然后   重点是  transition  对 tr 无效 对 li 才有效果 -->
+        <ul>
+            <transition-group>
+                <li v-for="(item,i) in list" :key="item.id" @click="del(i)">
+                    {{item.id}}--
+                    {{item.name}}--
+                    {{item.positon}}
+                </li>
+            </transition-group>
+        </ul>
+    </div>
+</body>
+
+<script>
+    var vm = new Vue({
+        el: '#vue1',
+        data: {
+            id: '',
+            name: '',
+            temp: {},
+            list: [
+                { "id": "1", "name": "简自豪", "positon": "ADC" },
+                { "id": "2", "name": "史森明", "positon": "辅助" },
+                { "id": "3", "name": "刘世宇", "positon": "打野" },
+                { "id": "4", "name": "严君泽", "positon": "上单" },
+            ]
+        },
+        methods: {
+            add() {
+                this.list.push({ "id": this.id, "name": this.name })
+            },
+            del(i) {
+                this.list.splice(i, 1)
+            }
+        }
+    })
+</script>
+
+</html>
