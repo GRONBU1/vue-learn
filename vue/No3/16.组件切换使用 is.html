@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="vue1">
+      <a href="" @click.prevent="flag='Hello'">Hello</a>
+      <a href="" @click.prevent="flag='Bye'">Bye</a>
+      <!-- 这样太麻烦了 -->
+      <Hello v-if="flag=='Hello'"></Hello>
+      <Bye v-if="flag=='Bye'"></Bye>
+      <br />
+      <!-- component是个占位符，：is填 组件的名称字符串 -->
+      <component :is="flag"></component>
+    </div>
+  </body>
+  <script>
+    Vue.component("Hello", {
+      template: "<h3>Hello Vue</h3>"
+    });
+    Vue.component("Bye", {
+      template: "<h3>Bye Vue</h3>"
+    });
+    var vm = new Vue({
+      el: "#vue1",
+      data: {
+        flag: "Hello"
+      },
+      methods: {}
+    });
+  </script>
+</html>
