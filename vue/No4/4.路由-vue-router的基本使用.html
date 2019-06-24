@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../lib/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="vue1">
+        <!-- 1. 定义 导向 -->
+        <!-- 默认渲染为 a 标签,使用tag 可以指定渲染为 什么标签 -->
+        <router-link to="/login" tag="span">登录</router-link>
+        <router-link to="/register">注册</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    // 2.定义 组件
+    const comp1 = {
+        template: '<h3>登录组件</h3>'
+    }
+    const comp2 = {
+        template: '<h3>注册组件</h3>'
+    }
+    // 注意,下面的写法的 comp1 不能写在 路由规则中
+    // 这里的comp1只能在html也没中当标签使用
+    // Vue.component('comp1',{
+    //     template:'xxx'
+    // })
+    // 3.绑定 导向和组件
+    const router = new VueRouter({
+        // 路由规则,负责 指定路由对应的组件 ,是个对象数组
+        // 主要有两个属性,path 和 component
+        routes: [
+            // 重定向 ,页面默认为 '/',设置重定向到'/login'
+            // 这样就可以实现默认 为 '/login'
+            { path: '/', redirect: '/login' },
+            { path: '/login', component: comp1 },
+            { path: '/register', component: comp2 }
+        ]
+    })
+    var vm = new Vue({
+        el: '#vue1',
+        data: {},
+        methods: {},
+        // 放入 Vue实例中
+        router: router
+    })
+</script>
+
+</html>

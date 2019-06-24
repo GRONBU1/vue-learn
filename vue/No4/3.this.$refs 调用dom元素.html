@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <template id="temp1">
+        <h4>I am Template</h4>
+    </template>
+    <div id="vue1">
+        <h3 ref="r1">Hellooooo Vue!!</h3>
+        <!-- 组件的 ref 应该写在 这 ,而不是 template 那里 -->
+        <comp1 ref="r2"></comp1>
+        <button @click="m1">按钮</button>
+        <button @click="m2">按钮</button>
+    </div>
+</body>
+<script>
+    Vue.component('comp1', {
+        template: '#temp1',
+        data: function () {
+            return {
+                msg: 'ddddddddddddd'
+            }
+        },
+        methods: {
+            show() {
+                console.info("我出现了")
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el: '#vue1',
+        data: {},
+        methods: {
+            m1() {
+                console.info(this.$refs.r1.innerText)
+            },
+            m2() {
+                console.info(this.$refs.r2.msg)
+            }
+        }
+    })
+</script>
+
+</html>
