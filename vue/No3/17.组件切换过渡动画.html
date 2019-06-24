@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+      .v-enter,
+      .v-leave-to {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      .v-enter-active,
+      .v-leave-active {
+        transition: all 0.4s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="vue1">
+      <a href="" @click.prevent="flag='Hello'">Hello</a>
+      <a href="" @click.prevent="flag='Bye'">Bye</a>
+
+      <!-- 过渡动画直接用transition包裹 -->
+      <!-- 如果不加mode out-in ，那么 动画是当组件1没有完成消失组件2 就会出现 -->
+      <transition mode="out-in">
+        <component :is="flag"></component>
+      </transition>
+    </div>
+  </body>
+  <script>
+    Vue.component("Hello", {
+      template: "<h3>Hello Vue</h3>"
+    });
+    Vue.component("Bye", {
+      template: "<h3>Bye Vue</h3>"
+    });
+    var vm = new Vue({
+      el: "#vue1",
+      data: {
+        flag: "Hello"
+      },
+      methods: {}
+    });
+  </script>
+</html>

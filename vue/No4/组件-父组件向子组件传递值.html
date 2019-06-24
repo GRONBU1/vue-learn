@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="vue1">
+      <!-- 可以使用 v-bind：来将值绑定到 子组件 上的参数 上 -->
+      <comp1 v-bind:a="b"></comp1>
+    </div>
+  </body>
+  <script>
+    var vm = new Vue({
+      el: "#vue1",
+      data: {
+        b: "Hello Vue"
+      },
+      methods: {},
+      components: {
+        comp1: {
+          template: "<h3>{{a}}</h3>",
+          //   必须在 props 中 声明才行， props 中的值是 只读的，不能重复写，如果重新赋值，可以成功都是会报错
+          props: ["a"]
+        }
+      }
+    });
+  </script>
+</html>
