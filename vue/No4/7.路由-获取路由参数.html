@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../lib/vue-router.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <!-- 创建模板 -->
+    <template id="t1">
+      <h3>登录</h3>
+    </template>
+    <template id="t2">
+      <h3>注册</h3>
+    </template>
+    <div id="vue1">
+      <!-- 创建导向 -->
+      <router-link to="/login/12/ss">登录</router-link>
+      <!-- 直接使用 查询字符串 传入参数 -->
+      <router-link to="/register?id=10&name=xx">注册</router-link>
+      <transition>
+        <router-view></router-view>
+      </transition>
+    </div>
+  </body>
+  <script>
+    //
+    var registert = {
+      template:
+        "<h1>注册组件---------{{$route.query.id}}----------{{$route.query.name}}</h1>"
+    };
+    var logint = {
+      template:
+        "<h1>登录组件---------{{this.$route.params.id}}----{{this.$route.params.name}}</h1>"
+    };
+    const router = new VueRouter({
+      routes: [
+        // 有点类似于使用 get 方式出传递 数据
+        { path: "/login/:id/:name", component: logint },
+        { path: "/register", component: registert }
+      ]
+    });
+
+    var vm = new Vue({
+      el: "#vue1",
+      data: {},
+      methods: {},
+      router: router
+    });
+  </script>
+</html>
