@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../lib/vue-router.js"></script>
+  </head>
+  <body>
+    <template id="t1">
+      <div>
+        <h2>Hello</h3>
+             <router-link to="/hello/login">Hello Login</router-link>
+              <router-link to="/hello/register">Hello Register</router-link>
+      </div>
+    </template>
+    <div id="vue1">
+      <router-link to="/hello">Hello</router-link>
+      <router-view></router-view>
+    </div>
+  </body>
+  <script>
+    const hello = {
+      template: "#t1"
+    };
+    const login = {
+      template: "<h3>你好</h3>"
+    };
+    const register = {
+      template: "<h3>你好1</h3>"
+    };
+    const router = new VueRouter({
+      routes: [
+          { 
+              path: "/hello",
+          component: hello ,
+        //   注意 ：这里不能加上斜线
+          children:[{path:'/login',component:login},{path:'/register',component:register}]
+          },
+        // 这样写 ，新的login组件会替换原来组件，而不是在原来组件的下面产生
+        //   {path:"/hello/login",component:login},
+      ]
+    });
+    var vm = new Vue({
+      el: "#vue1",
+      data: {},
+      methods: {},
+      router
+    });
+  </script>
+</html>
