@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue从零开始</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../lib/vue-router.js"></script>
+  </head>
+  <body>
+    <!-- 创建模板 -->
+    <template id="t1">
+      <h3>登录</h3>
+    </template>
+    <template id="t2">
+      <h3>注册</h3>
+    </template>
+    <div id="vue1">
+      <!-- 创建导向 -->
+      <router-link to="/login">登录</router-link>
+      <router-link to="/register">注册</router-link>
+      <router-view></router-view>
+    </div>
+  </body>
+  <script>
+    const router = new VueRouter({
+      routes: [
+        { path: "/login", component: logint },
+        { path: "/register", component: registert }
+      ]
+    });
+    var registert = Vue.extend({
+      template: "<h1>注册组件</h1>"
+    });
+    Vue.component("registert1", {
+      template: "<h1>注册组件</h1>"
+    });
+    var logint = Vue.extend({
+      template: "<h1>登录组件</h1>"
+    });
+    var vm = new Vue({
+      el: "#vue1",
+      data: {},
+      methods: {},
+      router: router
+    });
+  </script>
+</html>
