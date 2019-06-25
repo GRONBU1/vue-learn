@@ -6,6 +6,15 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="../lib/vue-router.js"></script>
+    <style>
+      /* 使用方法一：使用默认类选择器 */
+      .router-link-active {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 18px;
+        color: aqua;
+      }
+    </style>
   </head>
   <body>
     <!-- 创建模板 -->
@@ -17,27 +26,29 @@
     </template>
     <div id="vue1">
       <!-- 创建导向 -->
-      <router-link to="/login">登录</router-link>
+      <!-- 方法三，使用 active-class 指定样式 -->
+      <router-link to="/login" active-class="s2">登录</router-link>
       <router-link to="/register">注册</router-link>
       <router-view></router-view>
     </div>
   </body>
   <script>
+    //
+    var registert = {
+      template: "<h1>注册组件</h1>"
+    };
+    var logint = {
+      template: "<h1>登录组件</h1>"
+    };
     const router = new VueRouter({
       routes: [
         { path: "/login", component: logint },
         { path: "/register", component: registert }
-      ]
+      ],
+      // 方法二 ：指定特定的类选择器 ，这时默认选择器 router-link-active 没有效果
+      linkActiveClass: "s1"
     });
-    var registert = Vue.extend({
-      template: "<h1>注册组件</h1>"
-    });
-    Vue.component("registert1", {
-      template: "<h1>注册组件</h1>"
-    });
-    var logint = Vue.extend({
-      template: "<h1>登录组件</h1>"
-    });
+
     var vm = new Vue({
       el: "#vue1",
       data: {},
