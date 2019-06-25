@@ -9,9 +9,9 @@
   <body>
     <template id="t1">
       <div>
-        <h2>Hello</h3>
-             <router-link to="/hello/login">Hello Login</router-link>
-              <router-link to="/hello/register">Hello Register</router-link>
+        <h2>Hello</h2>
+        <router-link to="/hello/login">Hello Login</router-link>
+        <router-link to="/hello/register">Hello Register</router-link>
       </div>
     </template>
     <div id="vue1">
@@ -31,12 +31,15 @@
     };
     const router = new VueRouter({
       routes: [
-          { 
-              path: "/hello",
-          component: hello ,
-        //   注意 ：这里不能加上斜线
-          children:[{path:'/login',component:login},{path:'/register',component:register}]
-          },
+        {
+          path: "/hello",
+          component: hello,
+          //   注意 ：这里不能加上斜线
+          children: [
+            { path: "/login", component: login },
+            { path: "/register", component: register }
+          ]
+        }
         // 这样写 ，新的login组件会替换原来组件，而不是在原来组件的下面产生
         //   {path:"/hello/login",component:login},
       ]
