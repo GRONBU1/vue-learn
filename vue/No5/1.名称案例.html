@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue从零开始</title>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="../lib/vue-router.js"></script>
+  <body>
+    <div id="vue1">
+      <input v-model="x" type="text" />
+      <input v-model="m" type="text" />
+      <input type="text" v-model="xm" />
+    </div>
+  </body>
+  <script>
+    var vm = new Vue({
+      el: "#vue1",
+      data: {
+        x: "",
+        m: "",
+        xm: ""
+      },
+      methods: {},
+      //   使用 watch 可以监听 data中指定数据的裱花，然后出发watch、中的方法
+      watch: {
+        //   这里的方法名对应 data中的 数据，数据改变触发与数据同名的方法
+        //  有两个参数 ，第一个为当前data 最新的值 ，第二个为 上一次改变后的值
+        x: function(newVal, oldVal) {
+          console.info("我被出发了");
+          console.info(newVal);
+          console.info(oldVal);
+        }
+      }
+    });
+  </script>
+</html>

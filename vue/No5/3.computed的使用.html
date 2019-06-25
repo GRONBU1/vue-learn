@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue从零开始</title>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="../lib/vue-router.js"></script>
+  <body>
+    <div id="vue1">
+      <input v-model="x" type="text" />
+      <input v-model="m" type="text" />
+      <input type="text" v-model="xm" />
+      <p>{{ xm }}</p>
+      <p>{{ xm }}</p>
+      <p>{{ xm }}</p>
+    </div>
+  </body>
+  <script>
+    var vm = new Vue({
+      el: "#vue1",
+      data: {
+        x: "",
+        m: ""
+      },
+      methods: {},
+      computed: {
+        // computed 中能定义 【计算属性】，这些属性本质上是方法，但是在使用的时候是当做 属性来使用，
+        // 而不是调用方法的方式来使用
+        // 就是一定不要 加上 （） 来使用
+        // 注意1： 只要 【计算属性】 中 使用到的 data 发生了变化就会 触发这个【计算属性】
+        // 注意2： 【计算属性】的结果会被 缓存起来， 如果【计算属性】中所有的数据都没有发生变化，那么不会再次求值
+        xm: function() {
+          console.info("我被出发了");
+          return this.x + this.m;
+        }
+      }
+    });
+  </script>
+</html>
